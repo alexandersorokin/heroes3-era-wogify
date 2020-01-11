@@ -266,6 +266,8 @@ ERMS_PoweredBy=ERM Scripter v. 2004.10.5.945
 !!VRy-6:S0 T99;                                     [random roll]
 
 !!BG:E?y-1 A?y-2 Q?y-3 S?y-4 N?y-11;                [get destination stack, action type, side, spell, acting stack]
+!!FU&y-4=40:E;                                      [no effect on sacrifce]
+!!FU&y-4=63:E;                                      [no affect on teleportation]
 !!BMy-1&y-1>-1/y-2=1:I?y-5 P?y-8;                   [if hero casting, get side, position of target stack]
 !!BMy-1&y-1>-1/y-2=10:I?y-5 P?y-8;                  [if monster casting, get side, position of target stack]
 
