@@ -54,9 +54,9 @@ placed anywere close to an arcane tower, as you can get skill points very cheap 
 
 *** Main Menu ***
 !?OB63/32;
-!!UN:P16/?v1;
+!!UN:P16/?v2;
 
-!?OB63/32&v1=1;
+!?OB63/32&v2=1;
 !!IF:W-1; (specify current hero for hero variable checking and setting)
 !!VRv1:Sw38;
 !!VRv1:%2;
@@ -290,7 +290,7 @@ placed anywere close to an arcane tower, as you can get skill points very cheap 
 
 !!VRv1:S320 Tv342; (Draws random number, which decides artifact)
 !!VRv382&-10:Svv1; (Get artifact from table)
-** NOTE:  got ERM error "!!UN:Av382/1/?v383; - wrong artifact number"
+** NOTE:  got ERM error "UN:Av382/1/?v383; - wrong artifact number"
 ** added -10 conditional to next 3 commands to try to prevent re-occurance
 ** JHV 7/4/2008
 !!UN&-10:Av382/1/?v383;  set v383 = cost of artifact v382 (1/5) of max Artifact Merchant cost)
