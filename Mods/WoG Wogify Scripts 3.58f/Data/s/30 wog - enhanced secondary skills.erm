@@ -1,7 +1,7 @@
 ZVSE
 ERMS_ScriptDate=8.5(May).2012
 _WARNING_#1=IMPORTANT! This file is not in a plain text format. NEVER use any editor except ERM_S for making any kind of changes!
-ERMS_PoweredBy=ERM Scripter v. 2004.10.5.945
+ERMS_PoweredBy=ERM Scripter v. 2005.9.7.814
 ** ENHANCED SECONDARY SKILLS  -  ERM script 48
 
 ** By Arstahd
@@ -13,7 +13,7 @@ ERMS_PoweredBy=ERM Scripter v. 2004.10.5.945
 *  Z Variables used: z1-z3, z700-z706, z722-z725
 *  Y Variables used: y1-y11
 *  W Variables used: w4-w8
-*  Functions used: 7000-7026   (7018 not used)
+*  Functions used: 7000-7026   (7016, 7018, 7022 not used)
 *  Timers used: 50, 51
 *  Flags used: 1, 2
 
@@ -543,48 +543,43 @@ ERMS_PoweredBy=ERM Scripter v. 2004.10.5.945
 !!VRy6&x1=2:+10;                              [advanced bonus]
 !!VRy6&x1=3:+20;                              [expert bonus]
 !!VRv7027:S0;                                 [loop counter]
-!!FU7015&y8>0/y6>59:Px1/y2/y3;                [call function 7015 if have spell book and rolled over 59]
-** end of function
+** Algor: begin
+!!if&y8>0/y6>59:;
+  !!VRv1:S-1;
+  !!DO7015/0/69/1:Pv7020/y2/-1/x1;            [count number of avaliable spells in v1]
+  !!if&v1>-1:;
+    !!VRv1:-1;
+    !!VRy10:S0 Rv1;                           [y10 - random avaliable spell]
+    !!VRv1:S-1;
+    !!DO7015/0/69/1:Pv7020/y2/y10/x1;         [learn y10 avaliable spell]
+  !!en:;
+!!en:;
 
-** function to choose a spell: scholar   x1=scholar x2=wisdom x3=picture
-!?FU7015;
-!!VRy4&x1>0:S0 R29;                           [basic scholar]
-!!VRy4&x1>1/x2>0:S0 R44;                      [advanced scholar]
-!!VRy4&x1=3/x2>1:S0 R59;                      [expert scholar]
-!!FU7022:Px1/x2/x3/y4;                        [go to spell list]
-** end of function
-
-** function to give spell: scholar
-!?FU7016;
-!!HEv7020:Mx5/?y1;                            [check if hero has spell: y1=1 if yes]
-!!VRy2:S0;                                    [initialize y2]
-!!UN&x5=0:P152/?y2;                           [check if Summon Boat is banned: y2=1 if banned]
-!!UN&x5=7:P153/?y2;                           [check if Water Walk is banned: y2=1 if banned]
-!!UN&x5=9:P154/?y2;                           [check if Town Portal is banned: y2=1 if banned]
-!!UN&x5=1:P221/?y2;                           [check if Scuttle Boat is banned: y2=1 if banned]
-!!UN&x5=2:P222/?y2;                           [check if Visions is banned: y2=1 if banned]
-!!UN&x5=26:P223/?y2;                          [check if Armageddon is banned: y2=1 if banned]
-!!UN&x5=5:P246/?y2;                           [check if View Air is banned: y2=1 if banned]
-!!UN&x5=3:P247/?y2;                           [check if View Earth is banned: y2=1 if banned]
-!!VRy1:+y2;                                   [combine results]
-
-!!VRv7027:+1;                                 [infinite loop counter]
-!!FU7015&y1>0/v7027<50:Px1/x2/x3/x4/x5;       [call function 7015 if hero has spell (up to 50 times)]
-!!HEv7020&y1<1:Mx5/1;                         [give spell: 40% chance + bonus]
-!!IF&1000/y1<1:Q2/9/x5/1/z148016;
-** end of function
+!?FU7015;                                     [x1 - hero, x2 - wisdom, x3 - learn spell(>=0)/count spells(=-1), x4 - scholar]
+!!HEx1:Mx16/?y1;                              [y1=1 for known spell]
+!!UN:J0/x16/?y2;                              [y2=1 for banned spell]
+!!SSx16:L?y3;                                 [y3 - spell level]
+!!VRy6:Sy3 -2;                                [y6 - required wisdom level]
+!!VRy7:Sy3 -1;                                [y7 - required sholar level]
+!!if&y1=0/y2=0/y6<=x2/y7<=x4:;
+  !!VRv1:+1;                                  [v1 - spell count]
+  !!if&v1=x3:;
+    !!HEx1:Mx16/1 O?y4;                       [learn slell, y4 - owner]
+    !!OW:Iy4/?y5;                             [y5=0 for human player]
+    !!IF&y5=0:Q2/9/x16/1/z148016;             [message for human player]
+    !!VRx16:S100;                             [exit cycle]
+  !!en:;
+!!en:;
+** Algor: end
 
 ** function for eagle eye            x1 = hero #     x2 = attacker/defender
 !?FU7017;
-
-
 !!HEx1:S11/?y1 A2/63/?y2/?y3 A2/64/?y2/?y4 A2/65/?y2/?y5;     [get eagle eye skill level, check for artifacts]
 !!VRy6&y1>0:S10 *y1;                          [set base chance to skill level x 10]
 !!VRy6&y1>0/y3>0:+5;                          [Bird of Perception +5]
 !!VRy6&y1>0/y4>0:+10;                         [Stoic Watchman +10]
 !!VRy6&y1>0/y5>0:+15;                         [Emblem of Cognizance +15]
 !!VRy6&y1>0/y3>0/y4>0/y5>0:+30;               [All three +30]
-
 !!VRv7018&y1>0/x2=0:Sy6;                      [set for attacker]
 !!VRv7019&y1>0/x2=1:Sy6;                      [set for defender]
 
@@ -634,76 +629,6 @@ ERMS_PoweredBy=ERM Scripter v. 2004.10.5.945
 !!HEx1&x2=3:Ed300;                            [give 300 experience]
 ** end of function
 
-** function to list spells      x1=scholar/eagle eye x2=wisdom  x3=picture x4=spell index
-!?FU7022;
-** 1st level spells
-!!VRy5&x4=0:S0;
-!!VRy5&x4=1:S3;
-!!VRy5&x4=2:S5;
-!!VRy5&x4=3:S15;
-!!VRy5&x4=4:S27;
-!!VRy5&x4=5:S31;
-!!VRy5&x4=6:S32;
-!!VRy5&x4=7:S35;
-!!VRy5&x4=8:S37;
-!!VRy5&x4=9:S41;
-!!VRy5&x4=10:S42;
-!!VRy5&x4=11:S43;
-!!VRy5&x4=12:S46;
-!!VRy5&x4=13:S53;
-!!VRy5&x4=14:S54;
-** 2nd level spells
-!!VRy5&x4=15:S1;
-!!VRy5&x4=16:S2;
-!!VRy5&x4=17:S4;
-!!VRy5&x4=18:S10;
-!!VRy5&x4=19:S13;
-!!VRy5&x4=20:S16;
-!!VRy5&x4=21:S17;
-!!VRy5&x4=22:S24;
-!!VRy5&x4=23:S30;
-!!VRy5&x4=24:S44;
-!!VRy5&x4=25:S45;
-!!VRy5&x4=26:S47;
-!!VRy5&x4=27:S51;
-!!VRy5&x4=28:S62;
-!!VRy5&x4=29:S64;
-** 3rd level spells
-!!VRy5&x2>0/x4=30:S11;
-!!VRy5&x2>0/x4=31:S12;
-!!VRy5&x2>0/x4=32:S14;
-!!VRy5&x2>0/x4=33:S20;
-!!VRy5&x2>0/x4=34:S21;
-!!VRy5&x2>0/x4=35:S25;
-!!VRy5&x2>0/x4=36:S28;
-!!VRy5&x2>0/x4=37:S33;
-!!VRy5&x2>0/x4=38:S34;
-!!VRy5&x2>0/x4=39:S39;
-!!VRy5&x2>0/x4=40:S49;
-!!VRy5&x2>0/x4=41:S52;
-!!VRy5&x2>0/x4=42:S60;
-!!VRy5&x2>0/x4=43:S61;
-!!VRy5&x2>0/x4=44:S63;
-** 4th level spells
-!!VRy5&x2>1/x4=45:S7;
-!!VRy5&x2>1/x4=46:S9;
-!!VRy5&x2>1/x4=47:S19;
-!!VRy5&x2>1/x4=48:S22;
-!!VRy5&x2>1/x4=49:S23;
-!!VRy5&x2>1/x4=50:S26;
-!!VRy5&x2>1/x4=51:S29;
-!!VRy5&x2>1/x4=52:S38;
-!!VRy5&x2>1/x4=53:S48;
-!!VRy5&x2>1/x4=54:S50;
-!!VRy5&x2>1/x4=55:S55;
-!!VRy5&x2>1/x4=56:S56;
-!!VRy5&x2>1/x4=57:S58;
-!!VRy5&x2>1/x4=58:S59;
-!!VRy5&x2>1/x4=59:S65;
-
-!!FU7016:Px1/x2/x3/x4/y5;                     [give spell: scholar]
-
-** end of function
 
 ** function for scouting       x1=scouting
 !?FU7023;
