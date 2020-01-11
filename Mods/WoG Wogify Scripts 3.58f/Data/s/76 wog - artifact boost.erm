@@ -280,8 +280,8 @@ ERMS_PoweredBy=ERM Scripter v. 2004.5.12.945
 !!VRj:*v631; [Surcoat factor]
 !!VRk&v616>0:*j; [15 gold per creature per Emblem]
 !!VRk&v616>0:*v616;
-!!IF&5/v616>0:Q1/6/k/1/z102035;
-!!OW&v616>0:Rv602/6/dk; [give the gold]
+!!IF&5/v616>0/k>0:Q1/6/k/1/z102035; fix [k>0], only if hero has creatures, which may not be always true
+!!OW&v616>0/k>0:Rv602/6/dk; [give the gold]
 
 !!IF&5/v617>0:M1/z102036;
 !!VRy1:S30; [area]
