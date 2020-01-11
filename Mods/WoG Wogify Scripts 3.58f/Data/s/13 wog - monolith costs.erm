@@ -5,13 +5,13 @@ Monolith Costs v1.1 by Steven Lynch
 Puts a cost for using a two-way monolith
 WoGify Name: script65.erm
 
-Variables used: v1400
+Variables used: v7313
 Flags used: 1 (temporary)
 Last Updated: September 19, 2003
 
-!#UN:P65/?v1400;
+!#UN:P65/?v7313;
 
-!?OB45&v1400=1; [Trigger for stepping on any Two-Way Monolith]
+!?OB45&v7313=1; [Trigger for stepping on any Two-Way Monolith]
 !!OB998:S; [Disable Two-Way Monoliths until conditions are proven]
 !!IF:V1/0;
 !!VRy-2:Sc-1; [Calculate the number of days minus 1]
@@ -29,6 +29,6 @@ Last Updated: September 19, 2003
 !!IF&1/y-1<y-4:M1/z165001; [Message if the player said yes but doesn't have enough gold]
 !!OB998&-1000:R; [If the player is AI, let it use the liths regardless as it doesn't know what to do if it can't use a lith. The AI player will still have lost the remainder of any fee that it had in its treasury]
 
-!?OB43&v1400=1;
+!?OB43&v7313=1;
 !!IF&1000:M1/z165002;
 
