@@ -343,6 +343,9 @@ Flags Used: 1, 3-4
  [Clone stack]
 !!BMv3342:C65/v3347/3/50/1;
 
+ [Algor: какая-то хня происходит с y-переменными после клонирования отряда]
+!!VRy1:Sv3344 :2; !!VRy2:Sv3344 -y1; !!VRy4:Sv3346 :2; !!VRy3:Sv3346 -y4; [пересчитываем численности заново]
+
  [Correct current stack size to half size (y2), and orginal too (y3)]
 !!BMv3342:Ny2 By3; [Round up immediately after split]
 
