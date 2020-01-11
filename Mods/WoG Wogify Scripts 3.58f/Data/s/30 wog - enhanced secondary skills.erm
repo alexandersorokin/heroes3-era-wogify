@@ -707,6 +707,11 @@ ERMS_PoweredBy=ERM Scripter v. 2004.10.5.945
 
 ** function for scouting       x1=scouting
 !?FU7023;
+!!VRy4:S0;                                    [set to 0]
+!!VRy4&x1=1:R1199;                            [set random roll to 1.0% (12/1200)]
+!!VRy4&x1=2:R799;                             [set random roll to 1.5% (12/800)]
+!!VRy4&x1=3:R599;                             [set random roll to 2.0% (12/600)]
+!!FU&y4>12:E;
 !!HEv7020:O?v7021;                            [get hero's owner]
 !!HEv7020:B0/?z700;                           [get hero's name]
 !!HEv7020:R2/?y1;                             [get hero's sex]
@@ -717,10 +722,6 @@ ERMS_PoweredBy=ERM Scripter v. 2004.10.5.945
 !!VRz703&y1=0:Sz148021;
 !!VRz703&y1=1:Sz148022;
 !!VRy3:S11 +x1;                               [set scouting picture]
-!!VRy4:S0;                                    [set to 0]
-!!VRy4&x1=1:R1199;                            [set random roll to 1.0% (12/1200)]
-!!VRy4&x1=2:R799;                             [set random roll to 1.5% (12/800)]
-!!VRy4&x1=3:R599;                             [set random roll to 2.0% (12/600)]
 !!IF&1000/y4=1:Q2/20/y3/1/z148023;
 !!IF&1000/y4=1:Q2/35/20/1^^;
 !!HEv7020&y4=1:Id+20;                         [give 20 spell points]
