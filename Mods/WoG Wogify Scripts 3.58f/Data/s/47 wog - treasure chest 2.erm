@@ -297,14 +297,14 @@ Note: Function 5209 is used in the update of WoGify: script00.erm.
 !!VRy7&-2/v1<>-1/v2<>-2:Sv2; [y7 = actual number of skill]
 
 
-**IF&1000/v1<>-1/v2<>-1:Q2/20/y6/2/z131012; [ask if player wants daily reminders]
+!!IF&1000/v1<>-1/v2<>-1:Q2/20/y6/2/z131012; [ask if player wants daily reminders]
 
  [Store number of days in w52, skill number in w53,]
  [and 99 if daily reminders wanted in w54]
-**VRw52&v1<>-1/v2<>-1:S7; [Number of days left to learn skill]
-!!VRw52&v1<>-1/v2<>-1:S1; [Number of days left to learn skill] [JHV version]
+!!VRw52&v1<>-1/v2<>-1:S7; [Number of days left to learn skill]
+**VRw52&v1<>-1/v2<>-1:S1; [Number of days left to learn skill] [JHV version]
 !!VRw53&v1<>-1/v2<>-1:Sy7; [Number of skill being studied at Expert level]
-**VRw54&2:S99; [Store 99 in w54 if daily reminders wanted]
+!!VRw54&2:S99; [Store 99 in w54 if daily reminders wanted]
 
  [If two appropriate Secondary Skills weren't found, set v3 to 4 - Scroll result]
 !!VRv3|v1=-1/v2=-1:S4;
@@ -418,6 +418,7 @@ Note: Function 5209 is used in the update of WoGify: script00.erm.
 !!UN:U53/-1/?y1;
 
 !!PO998:V3/?y3; get pre-set rndm #
+!!VRy3&y3>y1:Sy1; fixed by algor
 
  [Part 1 of checking for owned status of mine]
 !!UN&y1>0:U53/-1/y3/4; [Store location of first mine checked for new UN:U syntax: v4/v5/v6]
