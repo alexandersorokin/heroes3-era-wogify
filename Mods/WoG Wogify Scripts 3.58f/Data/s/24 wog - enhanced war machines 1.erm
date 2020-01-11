@@ -565,6 +565,11 @@ ERMS_PoweredBy=ERM Scripter v. 2004.6.29.918
 !!VRv2&x1=8:C463/200/533/255; conflux
 !!VRv1&x2<v2|x2>v4:S-1;
 !!VRv1&x3<v3|x3>v5:S-1;
+!!CA-1:B3/13; [Check if Capitol is built - Flag 1=True if built]
+!!CA-1&-1:B3/12; [Check if City Hall is built - Flag 1=True if built]
+!!CA-1&-1:B3/11; [Check if Town Hall is built - Flag 1=True if built]
+!!CA-1&-1:B3/10; [Check if Village Hall is built - Flag 1=True if built]
+!!VRv1&-1:S-1;  allow destroy last blacksmith
 !!FU&v1=-1:E; exit if out of range
 !!VRv1:S-1;
 !!VRv1&x4=16/x1=0:S4; castle
