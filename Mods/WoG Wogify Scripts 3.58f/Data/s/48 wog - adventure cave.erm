@@ -1,10 +1,10 @@
 ZVSE
-ERMS_ScriptDate=11.9(September).2004
+ERMS_ScriptDate=13.12(December).2004
 _WARNING_#1=IMPORTANT! This file is not in a plain text format. NEVER use any editor except ERM_S for making any kind of changes!
-ERMS_PoweredBy=ERM Scripter v. 2004.9.2.1048
+ERMS_PoweredBy=ERM Scripter v. 2004.10.5.945
 
 ** Adventure Cave ERM script v1.0 - Donald X. Vaccarino
-** Updated: Sep. 11. 2004 by Hermann the Weird
+** Last Updated: December 13, 2004 by Fnord
 ** Requires WOG v3.58 or later.
 ** A location where lots of different things can happen
 
@@ -1616,8 +1616,14 @@ ERMS_PoweredBy=ERM Scripter v. 2004.9.2.1048
 !!BHy7:N?y8; [get attacked hero number if any]
 !!IF&y8<>-1:Wy8; [use attacked hero's w variables]
 
-!!BMy5&y5<>-1:R?y9; [get number of retaliates]
-!!VRy9:+1;
+!!BMy5&y5<>-1:T?y10 F?y11; [get type of monster: y10, Flags: y11]
+!!VRy11:&64; [Check if stack's Siege Weapon flag is set: y11]
+
+ [Exit Function if it's a "blank" monster, War Machine/Siege Weapon, or Emissary]
+!!FU|y11>0/y10=122/y10=124/y10=126/y10=128/y10=145/y10=146/y10=147/y10=148/y10=149/y10=160/y10=161/y10=162/y10=163:E;
+
+!!BMy5&y5<>-1:R?y9; [get number of retaliates: y9]
+!!VRy9:+1; [add a retaliate if it's not a war machine: y9]
 !!BMy5&y5<>-1/y8<>-1/w65=3/y1=6:Ry9; [regain a retaliate]
 
 ** end of function
@@ -2291,7 +2297,7 @@ ERMS_PoweredBy=ERM Scripter v. 2004.9.2.1048
 !!BMx16:I?y1 N?y2 A?y3 D?y4 S?y5; [get side, qty, att, def, speed]
 !!VRy3:+2; [+2 attack]
 !!VRy4:+2; [+2 defense]
-!!VRy5:+2; [+2 speed]
+!!VRy5&y5>0:+2; [+2 speed] [fix: adventure cave adds speed to war machines]
 !!BMx16&y1=x1/y2>0:Ay3 Dy4 Sy5; [set att, def, speed]
 
 ** end of function
@@ -2364,4 +2370,4 @@ ERMS_PoweredBy=ERM Scripter v. 2004.9.2.1048
 !!MN621:Mx16/-1/0; [clear mine guard slot]
 
 ** end of function
-
+
