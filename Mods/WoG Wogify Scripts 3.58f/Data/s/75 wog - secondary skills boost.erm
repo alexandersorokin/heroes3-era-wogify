@@ -2,7 +2,7 @@ ZVSE
 
 ERMS_ScriptDate=19.9(September).2004
 
-ERMS_PoweredBy=ERM Scripter v. 2004.9.10.918
+ERMS_PoweredBy=ERM Scripter v. 2005.9.7.814
 
 _WARNING_#1=IMPORTANT! This file is not in a plain text format. NEVER use any editor except ERM_S for making any kind of changes!
 
@@ -35,7 +35,7 @@ _WARNING_#1=IMPORTANT! This file is not in a plain text format. NEVER use any ed
 ** The other variables may be used elsewhere but will be trashed by this code.
 ** Use caution; this code may take place in the middle of another script, if a hero gains a level or a battle is provoked
 
-** Functions Used: 649-651, 653-668, 8166
+** Functions Used: 649-650, 653, 658-661, 666-668, 8166
 ** Timers Used: 74
 
 ** ERM numbers: Eagle Eye: 103
@@ -177,244 +177,54 @@ _WARNING_#1=IMPORTANT! This file is not in a plain text format. NEVER use any ed
 !!VRv910&v908<>-1/v909=0:S1;     [human if has owner and that owner is human]
 
 !!HE-1:A2/0/?v911/?v906;     [see if hero has a spell book]
-
-!!VRv1:S0;     [Reset spell counter]
-!!DO651/0/69/1&v906<>0:P;     [Check if hero knows all spells]
-!!VRy-2:S0 +v901 +35;     [Get pic for message]
-!!IF&v1=0/v910=1/v906<>0:Q2/20/y-2/1/z103046;
-!!HE-1&v1=0/v906<>0:S11/0;     [Remove eagle eye]
-!!FU&v1=0/v906<>0:E;     [Exit if all spells known]
-
-!!FU653&v901>0/v906<>0:P;     [call function if have eagle eye and spell book]
-
 !!IF&v910=1/v901>0/v906=0:M1/z103026;     [Message if no spell book]
 
-** End of level up trigger for eagle eye
-
-
-!?FU653;     [Function to handle eagle eye bonus spells]
-
-!!HE-1:S7/?y1;     [get wisdom skill level]
-!!VRy2:Sv901;     [assume right-hand spell will be skill level +1]
-!!VRy2:+1;
-!!VRy2&y2=4/y1<2:S3;     [bump it down to 3rd level if 4th level without advanced wisdom]
-!!VRy2&y2=3/y1<1:S2;     [bump it down to 2nd level if 3rd level without basic wisdom]
-
-!!VRv902:S903;     [variable # for left spell]
-!!FU654&y2=2:P;     [get a 1st level spell into v903]
-!!FU655&y2=3:P;     [get a 2nd level spell into v903]
-!!FU656&y2=4:P;     [get a 3rd level spell into v903]
-!!VRv902:S904;     [variable # for right spell]
-!!FU655&y2=2:P;     [get a 2nd level spell into v904]
-!!FU656&y2=3:P;     [get a 3rd level spell into v904]
-!!FU657&y2=4:P;     [get a 4th level spell into v904]
-
-!!FU662&y2=2:P;     [Functions for giving spells and displaying messages]
-!!FU663&y2=3:P;
-!!FU664&y2=4:P;
-
-** End of function to handle eagle eye bonus spells
-
-
-!?FU654;     [Function to pick a random 1st level spell for vv902]
-
-!!VRv920:C0/3/5/15/27/31/32/35/37/41/42/43/46/53/54;     [table of 1st level spells]
-!!VRv1:S0;     [Reset spell counter]
-!!DO665/920/934/1:P1/0/0;     [Loop for counting unknown level 1 spells]
-
-!!VRv1&v1=0:S999;
-!!FU&v1=999:E;     [Abort if all spells of that level known]
-
-!!VRy2:Sv1 -1;     [Random number between 1 and number of unknown spells]
-!!VRy1:S1 Ry2;
-
-!!DO665/920/934/1:P1/y1/1;     [Loop to choose a new, random and not known spell]
-!!VRvv902:Svv1;     [Translate back to spell table]
-
-** End of function to pick a random 1st level spell for vv902
-
-
-!?FU655;     [Function to pick a random 2nd level spell for vv902]
-
-!!VRv920:C1/2/4/10/13/16/17/24/30/44/45/47/51/62/64;     [table of 2nd level spells]
-!!VRv2:S0;     [Reset spell counter]
-!!DO665/920/934/1:P2/0/0;     [Loop for counting unknown level 2 spells]
-
-!!VRv2&v2=0:S999;
-!!FU&v2=999:E;     [Abort if all spells of that level known]
-
-!!VRy2:Sv2 -1;     [Random number between 1 and number of unknown spells]
-!!VRy1:S1 Ry2;
-
-!!DO665/920/934/1:P2/y1/1;     [Loop to choose a new, random and not known spell]
-!!VRvv902:Svv2;     [Translate back to spell table]
-
-** End of function to pick a random 2nd level spell for vv902
-
-
-!?FU656;     [Function to pick a random 3rd level spell for vv902]
-
-!!VRv920:C11/12/14/20/21/25/28/33/34/39/49/52/60/61/63;     [table of 3rd level spells]
-!!VRv3:S0;     [Reset spell counter]
-!!DO665/920/934/1:P3/0/0;     [Loop for counting unknown level 3 spells]
-
-!!VRv3&v3=0:S999;
-!!FU&v3=999:E;     [Abort if all spells of that level known]
-
-!!VRy2:Sv3 -1;     [Random number between 1 and number of unknown spells]
-!!VRy1:S1 Ry2;
-
-!!DO665/920/934/1:P3/y1/1;     [Loop to choose a new, random and not known spell]
-!!VRvv902:Svv3;     [Translate back to spell table]
-
-** End of function to pick a random 3rd level spell for vv902
-
-
-!?FU657;     [Function to pick a random 4th level spell for vv902]
-
-!!VRv920:C7/19/22/23/26/29/38/48/50/55/56/58/59/65/9;     [table of 4th level spells, town portal at the end]
-!!VRv4:S0;     [Reset spell counter]
-!!DO665/920/934/1:P4/0/0;     [Loop for counting unknown level 4 spells]
-
-!!VRv4&v4=0:S999;
-!!FU&v4=999:E;     [Abort if all spells of that level known]
-
-!!VRy2:Sv4 -1;     [Random number between 1 and number of unknown spells]
-!!VRy1:S1 Ry2;
-
-!!DO665/920/934/1:P4/y1/1;     [Loop to choose a new, random and not known spell]
-!!VRvv902:Svv4;     [Translate back to spell table]
-
-** end of function to pick a random 4th level spell for vv902
-
-
-!?FU662;     [Function to give and display spells - basic eagle eye]
-
-** level 1 and 2 spells available
-!!IF&v910=1/v1<>999/v2<>999:Q2/9/v903/9/v904/7/z103027;
-!!IF&v910<>1/v1<>999/v2<>999:V2/0;     [AI picks higher level spell and hopes for the best]
-!!HE-1&2/v1<>999/v2<>999:Mv903/1;     [learn left spell]
-!!HE-1&-2/v1<>999/v2<>999:Mv904/1;     [learn right spell]
-
-** only level 1 available
-!!IF&v910=1/v1<>999/v2=999:Q2/9/v903/1/z103047;
-!!HE-1&v1<>999/v2=999:Mv903/1;     [learn spell]
-
-** only level 2 available
-!!IF&v910=1/v1=999/v2<>999:Q2/9/v904/1/z103048;
-!!HE-1&v1=999/v2<>999:Mv904/1;     [learn spell]
-
-** none available
-!!IF&v910=1/v1=999/v2=999:Q2/20/36/1/z103049;
-
-** End of function to give and display spells - basic eagle eye
-
-
-!?FU663;     [Function to give and display spells - advanced eagle eye]
-
-** level 2 and 3 spells available
-!!IF&v910=1/v2<>999/v3<>999:Q2/9/v903/9/v904/7/z103027;
-!!IF&v910<>1/v2<>999/v3<>999:V2/0;     [AI picks higher level spell and hopes for the best]
-!!HE-1&2/v2<>999/v3<>999:Mv903/1;     [learn left spell]
-!!HE-1&-2/v2<>999/v3<>999:Mv904/1;     [learn right spell]
-
-** only level 2 available
-!!IF&v910=1/v2<>999/v3=999:Q2/9/v903/1/z103050;
-!!HE-1&v2<>999/v3=999:Mv903/1;     [learn spell]
-
-** only level 3 available
-!!IF&v910=1/v2=999/v3<>999:Q2/9/v904/1/z103051;
-!!HE-1&v2=999/v3<>999:Mv904/1;     [learn spell]
-
-** none available
-!!IF&v910=1/v2=999/v3=999:Q2/20/37/1/z103052;
-
-** End of function to give and display spells - advanced eagle eye
-
-
-!?FU664;     [Function to give and display spells - expert eagle eye]
-
-** level 3 and 4 spells available
-!!IF&v910=1/v3<>999/v4<>999:Q2/9/v903/9/v904/7/z103027;
-!!IF&v910<>1/v3<>999/v4<>999:V2/0;     [AI picks higher level spell and hopes for the best]
-!!HE-1&2/v3<>999/v4<>999:Mv903/1;     [learn left spell]
-!!HE-1&-2/v3<>999/v4<>999:Mv904/1;     [learn right spell]
-
-** only level 3 available
-!!IF&v910=1/v3<>999/v4=999:Q2/9/v903/1/z103053;
-!!HE-1&v3<>999/v4=999:Mv903/1;     [learn spell]
-
-** only level 4 available
-!!IF&v910=1/v3=999/v4<>999:Q2/9/v904/1/z103054;
-!!HE-1&v3=999/v4<>999:Mv904/1;     [learn spell]
-
-** none available
-!!IF&v910=1/v3=999/v4=999:Q2/20/38/1/z103055;
-!!HE-1&v3=999/v4=999:S11/0;     [Remove eagle eye]
-
-** End of function to give and display spells - expert eagle eye
-
-
-!?FU665;     [Function to look up heroes spell book]
-
-!!HE-1:M=vx16/1;     [Check if spell vx16 is known, flag is false if not known]
-!!UN:J0/vx16/?y1;     [Check if spell vx16 is banned, y1=1 if banned]
-
-!!VRy2:S0;     [Reset, to be sure]
-!!VRy3:S0;
-!!UN&vx16=0:P152/?y2;     [Special for WoG options, summon boat]
-!!UN&vx16=5:P246/?y2;     [view air]
-!!UN&vx16=3:P247/?y2;     [view earth]
-!!UN&vx16=1:P221/?y2;     [scuttle boat]
-!!UN&vx16=2:P222/?y2;     [visions]
-!!UN&vx16=7:P153/?y2;     [water walk]
-!!UN&vx16=9:P154/?y2;     [town portal]
-!!UN&vx16=26:P223/?y2;     [armageddon]
-
-!!VRy3:S0 +y1 +y2;     [y3<>0 if banned in map OR WoG options]
-
-!!VRvx1&x3=0/-1/y3=0:+1;     [Increase spell counter if spell not known and not banned]
-!!VRvx1&x2=1/-1/x3=1/y3=0:Sx16;     [vx16 is the new spell if random start point is 1 and spell is not banned]
-!!VRx16&x2=1/-1/x3=1/y3=0:S999;     [Abort if we have a new spell]
-!!VRx2&x2>1/-1/y1<>1:-1;     [If random start point is not 1, subtract 1]
-
-** End of function to look up heroes spell book
-
-
-!?FU651;     [Function to look up all spells]
-
-!!HE-1:M=x16/1;     [Check for spell x16]
-!!UN:J0/x16/?y1;     [Check if spell banned]
-!!FU&y1=1:E;     [Exit if spell banned]
-
-!!UN&x16=0:P152/?y2;     [If summon boat banned, special for WoG options]
-!!FU&x16=0/y2=1:E;
-
-!!UN&x16=3:P247/?y2;     [If view earth banned, special for WoG options]
-!!FU&x16=3/y2=1:E;
-
-!!UN&x16=5:P246/?y2;     [If view air banned, special for WoG options]
-!!FU&x16=5/y2=1:E;
-
-!!UN&x16=1:P221/?y2;     [If scuttle boat banned, special for WoG options]
-!!FU&x16=1/y2=1:E;
-
-!!UN&x16=2:P222/?y2;     [If visions banned, special for WoG options]
-!!FU&x16=2/y2=1:E;
-
-!!UN&x16=7:P153/?y2;     [If water walk banned, special for WoG options]
-!!FU&x16=7/y2=1:E;
-
-!!UN&x16=9:P154/?y2;     [If town portal banned, special for WoG options]
-!!FU&x16=9/y2=1:E;
-
-!!UN&x16=26:P223/?y2;     [If armageddon banned, special for WoG options]
-!!FU&x16=26/y2=1:E;
-
-!!VRv1&x16<>6/x16<>8/x16<>18/x16<>40/x16<>57/x16<>36/x16<>66/x16<>67/x16<>68/x16<>69/-1:+1;
-
-** End of function to look up all spells
--------------------------------------------------------------------------
+** Algor: begin
+!!FU&v906=0:E;               [exit, if no spellbook]
+!!VRv1:S-1;
+!!DO653/0/69/1:P-1/4/-1;     [count number of avaliable spells (1-4 lvl) in v1]
+!!if&v1=-1:;                 [if all spells known]
+  !!VRy-2:S0 +v901 +35;      [Get pic for message]
+  !!IF&v910=1:Q2/20/y-2/1/z103046;
+  !!HE-1:S11/0;              [Remove eagle eye]
+  !!FU:E;                    [Exit if all spells known]
+!!en:;
+
+!!if&v901>0/v906<>0:;        [learn spell]
+  !!HE-1:S7/?y1 S11/?y2;     [y1/y2 - wisdom/e.eye skill level]
+  !!VRy2:+1;                 [y2 - wisdom req. for e.eye]
+  !!VRy2&y1=0/y2>2:S2;       [y2 max avail. spell level]
+  !!VRy2&y1=1/y2>3:S3;       [...]
+  !!VRv1:S-1;
+  !!DO653/0/69/1:P-1/y2/-1;  [count number of avaliable spells in v1]
+  !!if&v1>=0:;
+    !!VRv1:-1;
+    !!VRy10:S0 Rv1;          [y10 - random avaliable spell #1]
+    !!VRy11:S0 Rv1;          [y11 - random avaliable spell #2]
+    !!VRv1:S-1;
+    !!DO653/0/69/1:P-1/y2/y10; [v1 - spell #1]
+    !!VRv2:Sv1;
+    !!VRv1:S-1;
+    !!DO653/0/69/1:P-1/y2/y11; [v1 - spell #1]
+    !!IF&v910<>1:V2/0;
+    !!IF&v910=1:Q2/9/v1/9/v2/7/z103027;
+    !!HE-1&2:Mv1/1;          [learn left spell]
+    !!HE-1&-2:Mv2/1;         [learn right spell]
+  !!en:;
+!!en:;
+
+!?FU653;                                      [x1 - hero, x2 - max. spell lvl, x3 - return spell(>=0)/count spells(=-1)]
+!!HEx1:Mx16/?y1;                              [y1=1 for known spell]
+!!UN:J0/x16/?y2;                              [y2=1 for banned spell]
+!!SSx16:L?y3;                                 [y3 - spell level]
+!!if&y1=0/y2=0/y3<=x2:;
+  !!VRv1:+1;                                  [v1 - spell count]
+  !!if&v1=x3:;
+    !!VRv1:Sx16;
+    !!VRx16:S100;                             [exit cycle]
+  !!en:;
+!!en:;
+** Algor: end
 
 
 *************************************************************************
