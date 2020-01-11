@@ -69,6 +69,9 @@ ERMS_PoweredBy=ERM Scripter v. 2004.10.5.945
 !!UN:P29/?y-1;     [Check for WoG option]
 !!FU&y-1=0:E;     [Exit if it's disabled]
 
+!!HE-1:O?y1;
+!!FU&y1<0:E; [Algor: exit if no hero at chest (already killed by rogues/bandits) ]
+
 !!VRv600:Sv998 %4; [x mod 4]
 !!VRv601:Sv999 %4; [y mod 4]
 !!VRv602:Sv601 *4 +v600; [now we have map position 0-15]
