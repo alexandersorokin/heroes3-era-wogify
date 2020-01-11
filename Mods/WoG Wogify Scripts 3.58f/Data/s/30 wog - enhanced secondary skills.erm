@@ -145,7 +145,7 @@ ERMS_PoweredBy=ERM Scripter v. 2004.10.5.945
 ** end of movement trigger
 
 ** start of battle-start trigger
-!?BA52|v7189=1/v7191=1/v7186=1/v7195=1/v7192=1/v7187=1;  [Continue trigger if any skills are enabled]
+!?BA52|v7189=1/v7191=1/v7186=1/v7195=1/v7192=1/v7187=1/v7198=1;  [Continue trigger if any skills are enabled]
 
 ** first aid
 !!VRv7040&v7189=1:C0/0/0/0/0/0/0;                   [no creatures to resurrect after battle attacker]
