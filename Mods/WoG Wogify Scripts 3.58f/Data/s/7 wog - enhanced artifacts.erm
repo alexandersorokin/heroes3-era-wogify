@@ -365,7 +365,7 @@ ERMS_PoweredBy=ERM Scripter v. 2004.9.2.1048
 !!DO7036/0/20/1&y8>0:Py1/5/2;               [prepare to add attack to hero's undead troops]
 !!DO7036/0/20/1&y8>0:Py1/5/3;               [prepare to add defense to hero's undead troops]
 !!DO7036/0/20/1&y8>0:Py1/1/4;               [prepare to add speed to hero's undead troops]
-!!HEv7057:A2/105/?y7/?y8;                   [see if hero has a Pendant of Resolve (Free Will)]
+!!HEv7057:A2/105/?y7/?y8;                  [see if hero has a Pendant of Resolve (Free Will)]
 !!DO7035/0/20/1&y8>0:Py1/46/50/0;           [prepare to stoneskin hero's troops]
 !!HEv7057:A2/107/?y7/?y8;                   [see if hero has a Pendant of True Aim (Total Recall)]
 !!DO7035/0/20/1&y8>0:Py1/44/50/0;           [prepare to precision hero's troops]
@@ -397,7 +397,8 @@ ERMS_PoweredBy=ERM Scripter v. 2004.9.2.1048
 !!VRx1:+1;                                  [increment stack number]
 !!BMx1:F?y1;                                [read stack flags: y1]
 !!VRy1&x2=44:&4;                            [if spell is Precision check if stack is a shooter]
-!!BMx1&y1>0:Mx2/x3/x4;                      [cast spell on stack unless Precision and non-shooter]
+!!BMx1&y1>0/x2=44:Mx2/x3/x4;                [cast precision only on shooter stacks]
+!!BMx1&x2<>44:Mx2/x3/x4;                    [Fix Valery, y1 returned negative values if dragons]
 ** end of function
 
 ** function to edit monster stats   (Parameters: x1=stack, x2=stat bonus, x3=filter)
