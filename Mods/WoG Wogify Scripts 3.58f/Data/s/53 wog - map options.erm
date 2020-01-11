@@ -932,6 +932,8 @@ Functions Used: FU3300-FU3303
 !!FU10925&v633>0:P; [Display list of new troops and ask if player wishes to purchase them]
 *                   [If yes, deduct gold and resources, v633>0 if yes]
 !!DO10926/0/6/1&v633>0:P; [If bought, add troops to garrison/garrison hero]
+!!UN&y-4=0/v633>0:R4; [Redraw town screen]
+!!UN&y-4=1/v633>0:R1; [Redraw adventure screen]
 
  [If no troops can be bought, display appropriate explanation message]
 !!CA0/y-3:N?z3; [Name of town: z3]
@@ -1060,8 +1062,6 @@ Functions Used: FU3300-FU3303
 !!VRy5&y5<0:S0; [Set non-upgraded troops to 0 if it's less than 0]
 !!VRy6&y6<0:S0; [Set upgraded troops to 0 if it's less than 0]
 !!CA0/y-3:M1/x16/y5/y6; [Set remaining troop numbers in town dwellings]
-!!UN&y-4=0:R4; [Redraw town screen]
-!!UN&y-4=1:R1; [Redraw adventure screen]
 
 !!EXy-6/y-7/y-8/x16/2&v600<0:Ey9; [If no hero, set stack experience for garrison slots]
 !!EXy-6/y-7/y-8/x16/2&v600<0:Ry10/156/d/yy8; [If no hero, give Warlord's Banners to garrison stack]
