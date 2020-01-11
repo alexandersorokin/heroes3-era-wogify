@@ -115,8 +115,8 @@ ERMS_PoweredBy=ERM Scripter v. 2004.6.29.918
 !!VRvx2&x16=0:S0;
 !!VRy1:Sx16;
 !!VRy1&x1=1:+21;
-!!BMy1:B?y2 N?y3 T?y4;
-!!VRvx2&y3<y2/y4>-1:+1;
+!!BMy1:B?y2 N?y3 T?y4 L?y5;
+!!VRvx2&y3<y2/y4>-1/y5=0:+1;
 
 !?FU902&v591=1;
 * 1
@@ -147,6 +147,8 @@ ERMS_PoweredBy=ERM Scripter v. 2004.6.29.918
 !!BG:H?y1;
 !!FU&y1<>x2:E; exit if different hero
 !!FU&x5=x6:E; exit if maximum creature founded
+!!BMx7:L?y88;
+!!FU&y88>0:E; exit special ressurect phase if creature have lost hit points
 !!CM:R0;
 !!VRx5:+1; add +1 creature
 !!BMx7:Lx3 Nx5; set hitpoints to 0
