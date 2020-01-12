@@ -1,24 +1,24 @@
 {
 	"caption": {
-		"en_US": "Heroes III In the Wake of Gods Wogify Scripts 3.58f"
+		"en_US": "Heroes III In the Wake of Gods Wogify Scripts"
 	},
 	"description": {
 		"full": {
 			"en_US": "readme.txt"
 		},
 		"short": {
-			"en_US": "The mod contains original wogify scripts version 3.58f"
+			"en_US": "The mod contains wogify scripts"
 		}
 	},
 	"author": "WoG team",
-	"mod_version": "3.58f",
+	"mod_version": "4.0.0",
 	"priority": 0,
 	"compatibility": {
 		"class": "all",
 		"entries": {}
 	},
 	"platform": "era",
-	"info_version": "2.9.3",
+	"info_version": "2.9.4",
 	"plugins": {},
 	"category": "gameplay"
 }
