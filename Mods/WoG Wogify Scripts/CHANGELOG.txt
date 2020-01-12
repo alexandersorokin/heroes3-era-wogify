@@ -1,0 +1,31 @@
+[+] henchmen description improved in wogify menu.
+[*] fix: first aid tent kills henchman.
+[*] fix: henchman can be resurrected by spell correctly.
+[*] fix: restarting game do not reset henchman experience.
+[+] the assign henchmen reminder improved.
+[*] fix: variable overlaps in the "monolith costs" script.
+[*] fix: witch hut gives invalid skill.
+[*] luck calculation includes the rampant Spirit Guardian in tobyn's scripts now.
+[*] fix: transfer ownership in tobyn's scripts. Now it does not allow transfer of ownership of level 8 dwellings.
+[*] fix: the resource cycling of estates script works correctly for level 1 to 9 heroes in tobyn's scripts.
+[*] Only one message per player about configurable resource cycling of estates in tobyn's scripts.
+[+] commander sanctuary: AI ressurects commander for free.
+[*] split decision fix by Algor: restore variables after stack cloning.
+[*] Enhanced war machines I fix: the last blacksmith building in destroyed town can not be destroyed.
+[*] Enhanced war machines I fix: enable status of the war machines is preserved between days. Variables overlap were removed.
+[*] Enhanced war machines I fix: first aid tent special resurrect phase is only allowed for a stack that lost no HP but lost some creatures and only present if there are such stack.
+[*] enhanced secondary skills fix: now sorcery works if it is only enabled option.
+[*] treasure chest 2 fix by Algor.
+[+] treasure chest 2: the question about skill learning daily reminding is returned.
+[*] chest fix by Algor: do not give a bonus if a hero is killed.
+[+] map options and buy all creatures button: redraw screen only once.
+[+] secondary skill boost: eagle eye spell choosing code is refactored by Algor.
+[+] first money script fixed (redraw status bar).
+[*] enhanced secondary skills: eagle eye does not affect sacrifice and teleportation.
+[*] enhanced secondary skills fix: now scouting does not freeze hero movement.
+[+] enhanced secondary skills: scholar spell choosing code is refactored by Algor.
+[+] Mithril enhancements fixed (AI will not receive negative gold after mithril conversion).
+[*] adventure cave fix: it adds speed to war machines.
+[*] battle academy fix: variables overlap.
+[*] enhanced artifacts fix by Valery: do not cast precision on dragons.
+[*] artifact boost: do not give gold to hero for the creatures if a hero has no creatures.
