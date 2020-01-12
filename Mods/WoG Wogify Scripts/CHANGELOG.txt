@@ -29,3 +29,4 @@
 [*] battle academy fix: variables overlap.
 [*] enhanced artifacts fix by Valery: do not cast precision on dragons.
 [*] artifact boost: do not give gold to hero for the creatures if a hero has no creatures.
+[+] battle extender fix by igrik: do not apply changes to the war machines to prevent a crash by using first aid tent on close stack.
